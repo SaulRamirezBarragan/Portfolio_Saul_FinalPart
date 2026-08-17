@@ -1,0 +1,12 @@
+import express from "express";
+import projectCtrl from "../controllers/project.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
+const router = express.Router();
+router.route("/api/projects").post(authCtrl.requireSignin, authCtrl.requireRole("admin"), projectCtrl.create);
+router.route("/api/projects").get(projectCtrl.list);
+router.route("/api/projects").delete(authCtrl.requireSignin, authCtrl.requireRole("admin"), projectCtrl.removeAll);
+router.param("projectId", projectCtrl.projectByID);
+router.route("/api/projects/:projectId").get(projectCtrl.read);
+router.route("/api/projects/:projectId").put(authCtrl.requireSignin, authCtrl.requireRole("admin"), projectCtrl.update);
+router.route("/api/projects/:projectId").delete(authCtrl.requireSignin, authCtrl.requireRole("admin"), projectCtrl.remove);
+export default router;

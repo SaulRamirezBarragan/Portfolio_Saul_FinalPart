@@ -1,0 +1,12 @@
+import express from "express";
+import educationCtrl from "../controllers/education.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
+const router = express.Router();
+router.route("/api/educations").post(authCtrl.requireSignin, authCtrl.requireRole("admin"), educationCtrl.create);
+router.route("/api/educations").get(educationCtrl.list);
+router.route("/api/educations").delete(authCtrl.requireSignin, authCtrl.requireRole("admin"), educationCtrl.removeAll);
+router.param("educationId", educationCtrl.educationByID);
+router.route("/api/educations/:educationId").get(educationCtrl.read);
+router.route("/api/educations/:educationId").put(authCtrl.requireSignin, authCtrl.requireRole("admin"), educationCtrl.update);
+router.route("/api/educations/:educationId").delete(authCtrl.requireSignin, authCtrl.requireRole("admin"), educationCtrl.remove);
+export default router;

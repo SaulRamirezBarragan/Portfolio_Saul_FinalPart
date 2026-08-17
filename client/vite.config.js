@@ -8,11 +8,11 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target:`http://localhost:${PORT}`,
+        target:`http://127.0.0.1:${PORT}`,
         changeOrigin: true,
       },
       '/auth': {
-        target:`http://localhost:${PORT}`,
+        target:`http://127.0.0.1:${PORT}`,
         changeOrigin: true,
       },
     },

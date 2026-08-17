@@ -16,6 +16,8 @@ export default function Home() {
                     This is my portfolio, here you will find evidence of projects that I've worked on.
                     This is an ongoing project, the design and format of this web page may change in the future.
                 </p>
+                <h2>Welcome to the final version of my portfolio</h2>
+                <p>This project has been really fun to develop, I hope you like the end result!!!</p>
             </div>
 
             <div className="content-card">
